@@ -1,8 +1,11 @@
-.DS_Store
-node_modules/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# production
 /dist
-npm-debug.log
-test/unit/coverage
-test/e2e/reports
-selenium-debug.log
-iconfont-test.html
+
+# misc
+.DS_Store
+npm-debug.log*

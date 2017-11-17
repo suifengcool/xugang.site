@@ -27,26 +27,15 @@
 │ │   └── request.js           # dva fetch
 
 │ ├── route.js             # 路由配置
-
 │ ├── index.js             # 入口文件
-
 │ ├── index.less           # 入口文件css
-
 │ └── index.html           # 入口文件html
-
 ├── package.json        # 项目信息
-
 ├── .editorconfig       #
-
 ├── .eslintrc           # Eslint config
-
 ├── .gitignore          #
-
 ├── .roadhogrc          # Roadhog config
-
 └── .roadhogrc.mock.js  # 数据mock配置
-
-
 
 
 

@@ -28,4 +28,3 @@ export default function request(url, options) {
     .then(data => ({ data }))
     .catch(err => ({ err }));
 }
-

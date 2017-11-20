@@ -23,40 +23,42 @@ const LoginForm = ({
     }
 
     return (
-		<div className={styles.form}>
-		    <div className={styles.logo}>
-				<span>abc</span>
-		    </div>
-		    <form>
-				<FormItem hasFeedback>
-				    {
-				    	getFieldDecorator('username', {
-							rules: [{
-								required: true,
-						    }],
-					    })(<Input size="large" onPressEnter={handleOk} placeholder="Username" />)
-					}
-				</FormItem>
-				<FormItem hasFeedback>
-				    {
-				    	getFieldDecorator('password', {
-							rules: [{
-								required: true,
-						    }],
-					    })(<Input size="large" type="password" onPressEnter={handleOk} placeholder="Password" />)
-					}
-				</FormItem>
-				<Row>
-				    <Button type="primary" size="large" onClick={handleOk}>
-						Sign in
-				    </Button>
-				    <p>
-						<span>Username：xugang</span>
-						<span>Password：123456</span>
-				    </p>
-				</Row>
+    	<div className={`${styles['bg']}`}>
+			<div className={`${styles['form']}`}>
+			    <div className={styles.logo}>
+					<span>ABC</span>
+			    </div>
+			    <form>
+					<FormItem hasFeedback>
+					    {
+					    	getFieldDecorator('username', {
+								rules: [{
+									required: true,
+							    }],
+						    })(<Input size="large" onPressEnter={handleOk} placeholder="Username" />)
+						}
+					</FormItem>
+					<FormItem hasFeedback>
+					    {
+					    	getFieldDecorator('password', {
+								rules: [{
+									required: true,
+							    }],
+						    })(<Input size="large" type="password" onPressEnter={handleOk} placeholder="Password" />)
+						}
+					</FormItem>
+					<Row>
+					    <Button type="primary" size="large" onClick={handleOk}>
+							Sign in
+					    </Button>
+					    <p>
+							<span>Username：xugang</span>
+							<span>Password：123456</span>
+					    </p>
+					</Row>
 
-			</form>
+				</form>
+			</div>
 		</div>
     )
 }

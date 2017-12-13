@@ -5,7 +5,12 @@ import { message } from 'antd'
 export default {
 	namespace: 'home',
 
-	state: {},
+	state: {
+		isShowThanks: false,
+		miniApp: false,
+		wechart: false,
+		showQQ: false
+	},
 
 	subscriptions: {
 	    setup({ dispatch, history }){ 
@@ -28,7 +33,7 @@ export default {
 	},
 
 	reducers: {
-	    save(state, action) {
+	    setPrames(state, action) {
 	        return { 
 	        	...state, 
 	        	...action.payload 

@@ -3,6 +3,7 @@
 	height: 100%;
 	background: url(../../../public/image/banner.jpg) center center #000;
 	background-size: cover;
+	color: #666;
 }
 .content{
 	position: absolute;
@@ -24,14 +25,25 @@
 
 .iconfont-box{
 	text-align: center;
+	.iconfont{
+		cursor: pointer;
+	}
 }
+
 .name-box{
 	text-align: center;
 	color: #0000006b;
 	text-shadow: 0 1px rgba(255,255,255,0.4);
 	font-size: 20px;
-	margin-bottom: 20px;
+	margin-top: 10px;
 }
+
+.thanks-words{
+	text-align: center;
+	line-height: 1.8;
+	font-size: 14px;
+}
+
 .thanks-box{
 	position: fixed;
 	bottom: 30px;
@@ -41,8 +53,9 @@
 	text-align: center;
 	width: 100%;
 }
+
 .tag-box{
-	color: #666;
+	margin-bottom: 20px;
 	a{
 	    display: inline-block;
 	    text-decoration: none;

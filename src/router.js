@@ -4,7 +4,8 @@ import { Router, Route, Switch } from 'dva/router';
 
 let config = [
     '/home/index',              // 首页
-    '/aboutMe',                      // 关于我页
+    '/aboutMe',                 // 关于我页
+    '/thanks'                   // 鸣谢
 ];
 
 // 定义路由

@@ -8,8 +8,8 @@ const app = dva();
 // app.use({});
 
 // 3. Model
-app.model(require('./models/login'));
 app.model(require('./models/home'));
+app.model(require('./models/aboutMe'));
 
 // 4. Router
 app.router(require('./router'));

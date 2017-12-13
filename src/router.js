@@ -1,12 +1,10 @@
 import React from 'react';
 import dynamic from 'dva/dynamic'
 import { Router, Route, Switch } from 'dva/router';
-import Login from './routes/login';
 
 let config = [
     '/home/index',              // 首页
-    '/login',                   // 登录页
-    '/register',                // 注册页
+    '/aboutMe',                      // 关于我页
 ];
 
 // 定义路由

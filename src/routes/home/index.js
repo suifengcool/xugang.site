@@ -1,36 +1,30 @@
 import React from 'react'
 import { connect } from 'dva'
-import { Button, Row, Form, Input } from 'antd'
+import { Button, Row, Col } from 'antd'
+import styles from './index.css';
 
-const FormItem = Form.Item
-
-const LoginForm = ({
+const Index = ({
 	props,
-    dispatch,
-    form: {
-	    getFieldDecorator,
-	    validateFieldsAndScroll,
-    }
+    dispatch
 }) => {
-	const handleOk = ()=>{
-		validateFieldsAndScroll((errors, values) => {
-		    if (errors) {
-				return
-		    }
-		    dispatch({ type: 'login/login', payload: values })
-		})
-    }
-
+	
     return (
-    	<div>
-			我是首页
-		</div>
+    	<Row className={`${styles['content-box']}`}>
+			<Row className={`${styles['content']}`}>
+				<Row className={`${styles['head-img']}`}>
+					<img src={require(`../../../public/image/me.jpg`)}/>
+				</Row>
+				<Row className={`${styles['head-img']}`}>
+					<i className={'iconfont icon-weixin'}></i>
+				</Row>
+			</Row>
+		</Row>
     )
 }
 
 const mapStateToProps = (props) => {
     return {
-  		props: props.login
+  		props: props.home
     };
 }
 
@@ -40,7 +34,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
-const Login = Form.create()(LoginForm);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
-// export default connect(({ props, dispatch}) => ({ props, dispatch }))(Form.create()(Login))
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

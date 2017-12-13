@@ -33,9 +33,9 @@ const Index = ({props,dispatch}) => {
 						<a href="https://suifengcool.github.io/" target="_blank">Blog</a>
 					</Col>
 					<Col>
-						<a href="">About me</a>
+						<Link to={'aboutMe'}>About me</Link>
 					</Col>
-					<Col><a href="">Enter</a></Col>
+					<Col><a href="#">Enter</a></Col>
 				</Row>
 				<Row className={`${styles['thanks-box']}`}>
 					<i className={'iconfont icon-icon04'} style={{fontSize:'18px',color: '#666',verticalAlign:'-3%',marginRight: 5}}></i>

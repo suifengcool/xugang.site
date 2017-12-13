@@ -6,11 +6,7 @@ import styles from './index.less'
 const Index = ({props,dispatch}) => {
     return (
     	<div className={`${styles['bg']}`}>
-			<div className={`${styles['form']}`}>
-			    <div className={styles.logo}>
-					<span>ABC</span>
-			    </div>
-			</div>
+		    关于我
 		</div>
     )
 }

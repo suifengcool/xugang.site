@@ -88,7 +88,7 @@ const Index = ({props,dispatch}) => {
 					<Col>
 						<Link to={'aboutMe'}>About me</Link>
 					</Col>
-					<Col><a href="#">Enter</a></Col>
+					<Col><Link to={'main'}>Enter<i className={'iconfont icon-jiantouyoushuang-'} style={{fontSize:'14px',verticalAlign:'-3%',marginLeft: 3}}></i></Link></Col>
 				</Row>
 				<Row className={`${styles['thanks-words']}`}>
 					{
@@ -108,6 +108,10 @@ const Index = ({props,dispatch}) => {
 				<Row className={`${styles['thanks-box']}`}>
 					<i className={'iconfont icon-icon04'} style={{fontSize:'18px',color: '#666',verticalAlign:'-3%',marginRight: 5}}></i>
 					<span onClick={()=> {showThanks()}}>鸣谢</span>
+				</Row>
+				<Row className={`${styles['plusIcon']}`}>
+					<i className={'iconfont icon-liuyan'} style={{fontSize: '20px'}}></i>
+					<p className={'plusText'}>点击给我留言</p>
 				</Row>
 			</Row>
 		</Row>

@@ -27,7 +27,7 @@ const LoginForm = ({
     	<div className={`${styles['bg']}`}>
 			<div className={`${styles['form']}`} style={{top: '40%'}}>
 			    <div className={styles.logo}>
-					<span>快点来拥抱我哦~~</span>
+					<span>登录</span>
 			    </div>
 			    <form>
 					<FormItem hasFeedback>
@@ -55,14 +55,24 @@ const LoginForm = ({
 						    </Button>
 					    </Col>
 					    <Col span={10} style={{marginLeft: 20}}>
-						    <Button size="large" onClick={handleOk}>
-								<Link to={'register'}>前去注册</Link>
+						    <Button  
+						    	size="large" 
+						    	onClick={()=>{
+									dispatch({
+			                            type: 'main/setParams',
+			                            payload:{pageStatus: 2, collapsed: false}
+			                        });
+			                        routerRedux.push('/register')
+								}}>
+								前去注册
 						    </Button>
 					    </Col>
-					    <p>
-							<span>Username：xugang</span>
-							<span>Password：123456</span>
-					    </p>
+					    {/*
+					    	<p>
+								<span>Username：xugang</span>
+								<span>Password：123456</span>
+						    </p>
+					    */}
 					</Row>
 
 				</form>

@@ -39,7 +39,7 @@ const LoginForm = ({
     	<div className={`${styles['bg']}`}>
 			<div className={`${styles['form']}`} style={{width: 380, height: 380, top: '35%'}}>
 			    <div className={styles.logo}>
-					<span>不要心急，只需简单几步</span>
+					<span>注册</span>
 			    </div>
 			    <form>
 					<FormItem
@@ -108,8 +108,17 @@ const LoginForm = ({
 						    </Button>
 					    </Col>
 					    <Col span={10} style={{marginLeft: 20}}>
-						    <Button size="large" style={{fontSize: 12}}>
-								<Link to={'login'}>已有账号，去登录</Link>
+						    <Button 
+						    	size="large" 
+						    	style={{fontSize: 12}} 
+						    	onClick={()=>{
+									dispatch({
+			                            type: 'main/setParams',
+			                            payload:{pageStatus: 1, collapsed: false}
+			                        });
+			                        routerRedux.push('/login')
+								}}>
+								已有账号，去登录
 						    </Button>
 					    </Col>
 					</Row>

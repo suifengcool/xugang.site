@@ -95,7 +95,7 @@ const Home = ({props,dispatch}) => {
                             payload:{pageStatus: 1, collapsed: false}
                         });
                         routerRedux.push('/login')
-					}}><a>Enter<i className={'iconfont icon-jiantouyoushuang-'} style={{fontSize:'14px',verticalAlign:'-3%',marginLeft: 3}}></i></a></Col>
+					}}><a style={{height: 34}}>Enter<i className={'iconfont icon-jiantouyoushuang-'} style={{fontSize:'14px',verticalAlign:'-3%',marginLeft: 3}}></i></a></Col>
 				</Row>
 				<Row className={`${styles['thanks-words']}`}>
 					{

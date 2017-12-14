@@ -99,11 +99,13 @@ const Main = ({main, dispatch}) => {
 
     return (
     	<Layout>
-        
             <div style={{height:clientHeight}}>
                 <Header className={_styles.header}>
                     <div className={_styles.logo}>
                         <img src={require(`../../../public/image/me.jpg`)}/>
+                    </div>
+                    <div className={_styles.desc}>
+                        致力于开发可维护、可持续、可扩展的高性能web应用
                     </div>
                     <div className={_styles['header-right']}>
                         <Row>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'dva'
+import { routerRedux } from 'dva/router';
 import { Button, Row, Col } from 'antd'
 import {Link} from 'dva/router';
 import styles from './index.less';
@@ -88,7 +89,13 @@ const Home = ({props,dispatch}) => {
 					<Col>
 						<Link to={'about_me'}>About me</Link>
 					</Col>
-					<Col><Link to={'login'}>Enter<i className={'iconfont icon-jiantouyoushuang-'} style={{fontSize:'14px',verticalAlign:'-3%',marginLeft: 3}}></i></Link></Col>
+					<Col onClick={()=>{
+						dispatch({
+                            type: 'main/setParams',
+                            payload:{pageStatus: 1, collapsed: false}
+                        });
+                        routerRedux.push('/login')
+					}}><a>Enter<i className={'iconfont icon-jiantouyoushuang-'} style={{fontSize:'14px',verticalAlign:'-3%',marginLeft: 3}}></i></a></Col>
 				</Row>
 				<Row className={`${styles['thanks-words']}`}>
 					{

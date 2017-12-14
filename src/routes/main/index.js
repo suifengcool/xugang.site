@@ -145,8 +145,7 @@ const Main = ({main, dispatch}) => {
                                         </div>
                                         <div className={_styles.logout}>
                                             <a onClick={() => {
-                                                dispatch({type: 'main/setParams', payload: {spinning: true, tip: '正在退出'}});
-                                                dispatch({type: 'auth/logout'});
+                                                dispatch({type: 'main/logout'});
                                             }}>退出</a>
                                         </div>
                                     </Menu>
@@ -228,7 +227,7 @@ const Main = ({main, dispatch}) => {
                     <Layout className={_styles['layout-content-margin-top']} className={_styles['fixIE10Flex']}>
                         <div className={_styles.breadcrumb}>
                             {
-                                nav.map((d, i) => {
+                                nav && nav.map((d, i) => {
                                     return (
                                         <div key={i}>{d}</div>
                                     )

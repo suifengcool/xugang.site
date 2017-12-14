@@ -22,14 +22,14 @@ const Main = ({main, dispatch}) => {
         id:1,
         key:"0_1",
         link:"overview",
-        sign:"overviewIcon",
+        sign:"icon-home",
         txt:"主页"
     },{
         children:[],
         id:2,
         key:"1_1",
         link:"tech_stack",
-        sign:"manageIcon",
+        sign:"icon-jishu",
         txt:"技术栈"
     },{
         children:[{
@@ -56,36 +56,36 @@ const Main = ({main, dispatch}) => {
         id:7,
         key:"2_1",
         link:"project/pc",
-        sign:"applicationIcon",
+        sign:"icon-xiangmu",
         txt:"项目展示"
     },{
         children:[],
         id:8,
         key:"4_1",
         link:"member",
-        sign:"aboutMeIcon",
+        sign:"icon-huiyuan",
         txt:"成为会员"
     },{
         children:[],
         id:9,
         key:"5_1",
         link:"msg_board",
-        sign:"aboutMeIcon",
+        sign:"icon-liuyan1",
         txt:"留言板"
     },{
         children:[],
         id:10,
         key:"6_1",
         link:"about_me",
-        sign:"aboutMeIcon",
+        sign:"icon-guanyuwomen",
         txt:"About me"
     },{
         children:[],
         id:11,
         key:"7_1",
         link:"",
-        sign:"aboutMeIcon",
-        txt:"首页"
+        sign:"icon-fanhui",
+        txt:"返回首页"
     }]
 
     const onCollapse = () => {
@@ -105,7 +105,7 @@ const Main = ({main, dispatch}) => {
                         <img src={require(`../../../public/image/me.jpg`)}/>
                     </div>
                     <div className={_styles.desc}>
-                        致力于开发可维护、可持续、可扩展的高性能web应用
+                        致力于开发高可维护、可持续、可扩展的高性能web应用
                     </div>
                     <div className={_styles['header-right']}>
                         <Row>
@@ -187,15 +187,9 @@ const Main = ({main, dispatch}) => {
                                                 title = {
                                                     <Link to={`/${link}`} style={{color:'#eee'}}>
                                                         <Row>
-                                                            <Col span={4} style={{padding: '10px 0'}}>
-                                                                <div className={_styles[`${sign}`]}></div>
-                                                            </Col>
+                                                            <i className={`iconfont ${sign}`} style={{marginRight: 10,verticalAlign: '-3%'}}></i>
                                                             {
-                                                                !collapsed ?
-                                                                <Col span={20}>
-                                                                    {txt}
-                                                                </Col>
-                                                                : ''
+                                                                !collapsed ? <span>{txt}</span> : ''
                                                             }
                                                             
                                                         </Row>
@@ -219,15 +213,9 @@ const Main = ({main, dispatch}) => {
                                             <Menu.Item className={_styles['sider-bg']} key={key}>
                                                 <Link to={`/${link}`} style={{color:'#eee'}}>
                                                     <Row>
-                                                        <Col span={4} style={{padding: '5px 0'}}>
-                                                            <Icon className={_styles[`${sign}`]}/>
-                                                        </Col>
+                                                        <i className={`iconfont ${sign}`} style={{marginRight: 10,verticalAlign: '1%'}}></i>
                                                         {
-                                                            !collapsed ?
-                                                            <Col span={20}>
-                                                                {txt}
-                                                            </Col>
-                                                            : ''
+                                                            !collapsed ? <span>{txt}</span> : ''
                                                         }
                                                     </Row>
                                                 </Link>
@@ -253,7 +241,11 @@ const Main = ({main, dispatch}) => {
                                 components[currentRoute] || ''
                             }
                         </Content>
+                        <div style={{ textAlign: 'center' ,position: 'fixed',left:0,bottom:'0',color: '#000',width: '100%',height: 48,background :'#7B8182',lineHeight: '48px'}}>
+                            © 2017 - 随风 前端开发  - 鄂ICP备16003684号 坚持·规范·专注
+                        </div>
                     </Layout>
+
                 </Layout>
             </div>
         </Layout>

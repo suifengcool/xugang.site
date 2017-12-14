@@ -86,9 +86,9 @@ const Home = ({props,dispatch}) => {
 						<a href="https://suifengcool.github.io/" target="_blank">Blog</a>
 					</Col>
 					<Col>
-						<Link to={'aboutMe'}>About me</Link>
+						<Link to={'about_me'}>About me</Link>
 					</Col>
-					<Col><Link to={'overview'}>Enter<i className={'iconfont icon-jiantouyoushuang-'} style={{fontSize:'14px',verticalAlign:'-3%',marginLeft: 3}}></i></Link></Col>
+					<Col><Link to={'login'}>Enter<i className={'iconfont icon-jiantouyoushuang-'} style={{fontSize:'14px',verticalAlign:'-3%',marginLeft: 3}}></i></Link></Col>
 				</Row>
 				<Row className={`${styles['thanks-words']}`}>
 					{
@@ -110,8 +110,10 @@ const Home = ({props,dispatch}) => {
 					<span onClick={()=> {showThanks()}}>鸣谢</span>
 				</Row>
 				<Row className={`${styles['plusIcon']}`}>
+				<Link to={'msg_board'}>
 					<i className={'iconfont icon-liuyan'} style={{fontSize: '20px'}}></i>
 					<p className={'plusText'}>点击给我留言</p>
+				</Link>
 				</Row>
 			</Row>
 		</Row>

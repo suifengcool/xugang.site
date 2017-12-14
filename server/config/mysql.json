@@ -1,0 +1,7 @@
+{
+	"host": "sql.m77.vhostgo.com",
+	"port": 3306,
+    "user": "suifengcool",
+    "password": "xu19880816",
+    "database": "suifengcool"
+}

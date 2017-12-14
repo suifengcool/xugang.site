@@ -3,12 +3,22 @@ import { connect } from 'dva'
 
 import Home from './Home';
 import Main from './Main';
+import Login from './Login';
+import Register from './Register';
 
 const Index = (main,dispatch) => {
-const {isHomePage} = main.main
+let {pageStatus} = main.main
+
 	return (
 		<div style={{height: '100%'}}>
-			{isHomePage? <Home />:<Main />}
+			{(()=>{
+                switch(pageStatus){
+                	case 0:return <Home />
+                	case 1:return <Login />
+                	case 2:return <Register />
+                    case 3:return <Main />
+                }
+            })()}
 		</div>
 	);
 }

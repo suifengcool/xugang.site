@@ -4,7 +4,7 @@ import { Button, Row, Col } from 'antd'
 import {Link} from 'dva/router';
 import styles from './index.less';
 
-const Index = ({props,dispatch}) => {
+const Home = ({props,dispatch}) => {
 	const {isShowThanks, miniApp, wechart, showQQ} = props;
 
 	const qcord = require('../../../public/image/qcord.png')
@@ -88,7 +88,7 @@ const Index = ({props,dispatch}) => {
 					<Col>
 						<Link to={'aboutMe'}>About me</Link>
 					</Col>
-					<Col><Link to={'main'}>Enter<i className={'iconfont icon-jiantouyoushuang-'} style={{fontSize:'14px',verticalAlign:'-3%',marginLeft: 3}}></i></Link></Col>
+					<Col><Link to={'overview'}>Enter<i className={'iconfont icon-jiantouyoushuang-'} style={{fontSize:'14px',verticalAlign:'-3%',marginLeft: 3}}></i></Link></Col>
 				</Row>
 				<Row className={`${styles['thanks-words']}`}>
 					{
@@ -130,4 +130,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

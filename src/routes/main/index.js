@@ -15,7 +15,7 @@ const minHeight = clientHeight - (56 + 45 + 10 + 15);
 
 const Main = ({main, dispatch}) => {
     
-    const {currentRoute, nav} = main;
+    const {currentRoute, nav, collapsed} = main;
 
     const menus = [{
         children:[],
@@ -23,58 +23,87 @@ const Main = ({main, dispatch}) => {
         key:"0_1",
         link:"overview",
         sign:"overviewIcon",
-        txt:"总览"
+        txt:"主页"
     },{
-        children:[{
-            key: "1_2", 
-            id: 2, 
-            txt: "图表分析", 
-            link: "manage_echarts"
-        },{
-            key: "5_2", 
-            id: "8001", 
-            txt: "配置中心", 
-            link: "manage_config"
-        }],
-        id:3,
+        children:[],
+        id:2,
         key:"1_1",
-        link:"manage_echarts",
+        link:"tech_stack",
         sign:"manageIcon",
-        txt:"运营管理"
+        txt:"技术栈"
     },{
         children:[{
             key: "2_2", 
-            id: "8001", 
-            txt: "cms管理", 
-            link: "articls"
+            id: 3, 
+            txt: "PC端", 
+            link: "project/pc"
+        },{
+            key: "2_3", 
+            id: 4, 
+            txt: "移动端", 
+            link: "project/mobile"
+        },{
+            key: "2_4", 
+            id: 5, 
+            txt: "微信公众号", 
+            link: "project/wechart_public"
+        },{
+            key: "2_5", 
+            id: 6, 
+            txt: "微信小程序", 
+            link: "project/wechart_miniapp"
         }],
-        id:4,
+        id:7,
         key:"2_1",
-        link:"articls",
+        link:"project/pc",
         sign:"applicationIcon",
-        txt:"其他应用"
+        txt:"项目展示"
     },{
         children:[],
-        id:5,
-        key:"3_1",
-        link:"myself",
+        id:8,
+        key:"4_1",
+        link:"member",
+        sign:"aboutMeIcon",
+        txt:"成为会员"
+    },{
+        children:[],
+        id:9,
+        key:"5_1",
+        link:"msg_board",
+        sign:"aboutMeIcon",
+        txt:"留言板"
+    },{
+        children:[],
+        id:10,
+        key:"6_1",
+        link:"about_me",
         sign:"aboutMeIcon",
         txt:"About me"
     },{
         children:[],
-        id:6,
-        key:"4_1",
+        id:11,
+        key:"7_1",
         link:"",
         sign:"aboutMeIcon",
         txt:"首页"
     }]
 
+    const onCollapse = () => {
+        dispatch({
+            type: 'main/setParams',
+            payload: {
+                collapsed: !collapsed
+            }
+        })
+    }
+
     return (
     	<Layout>
+        
             <div style={{height:clientHeight}}>
                 <Header className={_styles.header}>
                     <div className={_styles.logo}>
-                        logo区域
+                        <img src={require(`../../../public/image/me.jpg`)}/>
                     </div>
                     <div className={_styles['header-right']}>
                         <Row>
@@ -114,9 +143,9 @@ const Main = ({main, dispatch}) => {
                                         </div>
                                         <div className={_styles.logout}>
                                             <a onClick={() => {
-                                                dispatch({type: 'main/setParams', payload: {spinning: true, tip: '正在退出系统'}});
+                                                dispatch({type: 'main/setParams', payload: {spinning: true, tip: '正在退出'}});
                                                 dispatch({type: 'auth/logout'});
-                                            }}>退出系统</a>
+                                            }}>退出</a>
                                         </div>
                                     </Menu>
                                 )}>
@@ -131,9 +160,11 @@ const Main = ({main, dispatch}) => {
                 <Layout className={_styles['layout-margin-top']}>
                     <Sider
                         className={_styles['sider-bg']}
-                        trigger={null}
                         style={{minHeight}}
                         width={200}
+                        collapsible
+                        collapsed={collapsed}
+                        onCollapse={onCollapse}
                     >
                         <div className={_styles['control-label']}>
                             <span>控制台</span>
@@ -157,9 +188,14 @@ const Main = ({main, dispatch}) => {
                                                             <Col span={4} style={{padding: '10px 0'}}>
                                                                 <div className={_styles[`${sign}`]}></div>
                                                             </Col>
-                                                            <Col span={20}>
-                                                                {txt}
-                                                            </Col>
+                                                            {
+                                                                !collapsed ?
+                                                                <Col span={20}>
+                                                                    {txt}
+                                                                </Col>
+                                                                : ''
+                                                            }
+                                                            
                                                         </Row>
                                                     </Link>
                                                 }
@@ -184,9 +220,13 @@ const Main = ({main, dispatch}) => {
                                                         <Col span={4} style={{padding: '5px 0'}}>
                                                             <Icon className={_styles[`${sign}`]}/>
                                                         </Col>
-                                                        <Col span={20}>
-                                                            {txt}
-                                                        </Col>
+                                                        {
+                                                            !collapsed ?
+                                                            <Col span={20}>
+                                                                {txt}
+                                                            </Col>
+                                                            : ''
+                                                        }
                                                     </Row>
                                                 </Link>
                                             </Menu.Item>

@@ -11,19 +11,13 @@ export default {
         // 加载信息
         spinning: true,
         tip: '加载中',
-        // 菜单
-        menus: [],
-        menuLinks: [],
-        //sub
+        menus: [],                     // 菜单
+        menuLinks: [],                 //sub
         current: '',
         rootSubmenuKeys: [],
-        // 当前路由
-        currentRoute: '',
+        currentRoute: '',              // 当前路由
         collapsed: false,
-        // 导航信息
-        nav: [],
-        //每个页面的所有权限
-        auths:[],
+        nav: [],                       // 导航信息
         isHomePage: true
     },
 

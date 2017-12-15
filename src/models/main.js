@@ -1,7 +1,7 @@
 import { routerRedux } from 'dva/router';
 import { message } from 'antd';
 import {setCookie, getCookie, getTimestamp, encryptByDES } from '../utils/utils';
-import {login, register, registerCheck} from '../services/login/index';
+import {login, register, registerCheckByUser, registerCheckByEmail} from '../services/login/index';
 
 const navs = require('../config/navs.json');
 const sid = getCookie('SID_KEY')
@@ -17,8 +17,10 @@ export default {
         collapsed: false,              // slider是否展开
         nav: [],                       // 导航信息
         pageStatus: 0,                 // 页面类型，0首页，1登录页，2注册页，3进入主页
-
-
+        userNameUsed: false,           // 注册页面，用户名是否被占用
+        emailUsed: false,              // 注册页面，邮箱是否被占用
+        confirmDirty: '',              // 注册页面，输入的密码
+        passwordDiff: false,           // 注册页面，第二次输入的密码不一致
     },
 
 	subscriptions: {
@@ -105,15 +107,28 @@ export default {
             }
         },
 
-        // 注册check
-        * registerCheck({ payload },{ put, call, select }) {
-            const data = yield call(registerCheck, payload);
-            if(data.code != 200){
-                message.success('注册成功')
-
+        // 注册check userName
+        * registerCheckByUser({ payload },{ put, call, select }) {
+            const data = yield call(registerCheckByUser, payload);
+            if(data.code == 200){
                 yield put({
                     type: 'setParams',
-                    payload:{pageStatus: 3}
+                    payload:{
+                        userNameUsed: data.data ? true : false
+                    }
+                });
+            }
+        },
+
+        // 注册check email
+        * registerCheckByEmail({ payload },{ put, call, select }) {
+            const data = yield call(registerCheckByEmail, payload);
+            if(data.code == 200){
+                yield put({
+                    type: 'setParams',
+                    payload:{
+                        emailUsed: data.data ? true : false
+                    }
                 });
             }
         }

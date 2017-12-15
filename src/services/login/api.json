@@ -6,6 +6,7 @@
   "api": [
     "/user/login",
     "/user/register",
-    "/user/registerCheck"
+    "/user/registerCheckByUser",
+    "/user/registerCheckByEmail"
   ]
 }

@@ -45,16 +45,7 @@ module.exports = {
 							msg: '账号或者密码错误',
 						})
 					}
-				    
-				    connection.end(function(err){
-						if(err){
-							console.log('关闭数据库操作失败')
-						}else{
-							console.log('关闭数据库操作成功')
-						}
-					}) 
-	
-				    
+				    connection.end(); 
 				});  
 			}
 		})
@@ -77,7 +68,6 @@ module.exports = {
 				console.log('与数据库连接失败')
 			}else{
 				console.log('与数据库连接成功');
-
 				var usr = {
 					user_name: user_name,
 					password: password,
@@ -91,22 +81,15 @@ module.exports = {
 						data: null,
 						msg: '注册成功',
 					})
-					connection.end(function(err){
-						if(err){
-							console.log('关闭数据库操作失败')
-						}else{
-							console.log('关闭数据库操作成功')
-						}
-					}) 
+					connection.end(); 
 				}); 
 			}
 		})
 	},
 
-	// 注册-check接口
-	[`POST ${apiPrefix}/user/registerCheck`] (req, res) {
-		const { user_name, email } = req.body;	
-		console.log('user_name:',user_name)	
+	// 注册-check user接口
+	[`POST ${apiPrefix}/user/registerCheckByUser`] (req, res) {
+		const { user_name } = req.body;	
 		var mysql = require('mysql');
 		var connection = mysql.createConnection({
 			host: 'sql.m77.vhostgo.com',
@@ -121,42 +104,60 @@ module.exports = {
 				console.log('与数据库连接失败')
 			}else{
 				console.log('与数据库连接成功'); 
-				connection.query(`SELECT * from user where user_name = '${user_name}' or email = '${email}'`, function(err, rows, fields) {  
-				    if (err) throw err;  
-				    if(rows){
-				    	if(user_name){
-							res.json({
-					    		code: 201,
-					    		data: {
-					    			user_name: user_name
-					    		},
-					    		msg: '用户名已被占用'
-					    	})
-				    	}else{
-							res.json({
-					    		code: 202,
-					    		data: {
-					    			user_name: user_name
-					    		},
-					    		msg: '邮箱已被占用'
-					    	})
-				    	}
+				connection.query(`SELECT * from user where user_name = '${user_name}'`, function(err, rows, fields) {  
+				    if (err) throw err; 
+				    if(rows.length){
+				    	res.json({ 
+						code: 200,
+							data: 1,
+							msg: '该用户名已被占用',
+						})
 				    }else{
-				    	res.json({
-				    		code: 200,
-				    		data: null,
-				    		msg: ''
-				    	})
+				    	res.json({ 
+							code: 200,
+							data: 0,
+							msg: '用户名通过验证',
+						})
 				    }
-				    connection.end(function(err){
-						if(err){
-							console.log('关闭数据库操作失败')
-						}else{
-							console.log('关闭数据库操作成功')
-						}
-					}) 
-	
-				    
+				    connection.end() 
+				});  
+			}
+		})
+	},
+
+	// 注册-check email接口
+	[`POST ${apiPrefix}/user/registerCheckByEmail`] (req, res) {
+		const {email } = req.body;	
+		var mysql = require('mysql');
+		var connection = mysql.createConnection({
+			host: 'sql.m77.vhostgo.com',
+			port: 3306,
+		    user: 'suifengcool',
+		    password: 'xu19880816',
+		    database: 'suifengcool'
+		});
+
+		connection.connect(function(err){
+			if(err){
+				console.log('与数据库连接失败')
+			}else{
+				console.log('与数据库连接成功'); 
+				connection.query(`SELECT * from user where email = '${email}'`, function(err, rows, fields) {  
+				    if (err) throw err; 
+				    if(rows.length){
+				    	res.json({ 
+							code: 200,
+							data: 1,
+							msg: '该邮箱已被占用',
+						})
+				    }else{
+				    	res.json({ 
+							code: 200,
+							data: 0,
+							msg: '邮箱通过验证',
+						})
+				    }
+				    connection.end() 
 				});  
 			}
 		})

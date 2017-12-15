@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'dva'
 import {Link} from 'dva/router';
 import { routerRedux } from 'dva/router';
-import { Button, Row, Form, Input ,Col} from 'antd'
+import { Button, Row, Form, Input ,Col, message} from 'antd'
 import styles from '../Login/index.less'
+
 const FormItem = Form.Item
 
 let regex  = new RegExp('^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{8,20}$');
@@ -14,10 +15,21 @@ const LoginForm = ({
     form: {
 	    getFieldDecorator,
 	    validateFieldsAndScroll,
-	    getFieldsValue
+	    getFieldsValue,
+	    validateFields
     }
 }) => {
+	const { userNameUsed, emailUsed, confirmDirty, passwordDiff} = props;
+
 	const handleOk = ()=>{
+		if(userNameUsed || emailUsed){
+			message.error('请重新填写用户名或邮箱');
+			return;
+		}
+		if(passwordDiff){
+			message.error('两次输入的密码不一致');
+			return;
+		}
 		validateFieldsAndScroll((errors, values) => {
 		    if (errors) {
 				return
@@ -33,16 +45,34 @@ const LoginForm = ({
 		},
 		wrapperCol: {
 			xs: { span: 24 },
-			sm: { span: 14 },
+			sm: { span: 16 },
 		}
 	};
 
-	const checkHandle = () => {
-		console.log('11111111')
-			const values = getFieldsValue()
-		    console.log('values:',values)
-		    dispatch({ type: 'main/registerCheck', payload: values })
+	const checkUserHandle = () => {
+		const values = getFieldsValue()
+	    dispatch({ type: 'main/registerCheckByUser', payload: values })
 	};
+
+	const checkEmailHandle = () => {
+		const values = getFieldsValue()
+
+	    dispatch({ type: 'main/registerCheckByEmail', payload: values })
+	};
+
+	const handleConfirmBlur = (e) => {
+		const value = e.target.value;
+		if(confirmDirty){
+			if(confirmDirty != value){
+				message.error('两次密码不一致!');
+				dispatch({ type: 'main/setParams', payload: {passwordDiff: true} })
+			}else{
+				dispatch({ type: 'main/setParams', payload: {passwordDiff: false} })
+			}
+		}else{
+			dispatch({ type: 'main/setParams', payload: {confirmDirty: value, passwordDiff: false} })
+		}
+	}
 
     return (
     	<div className={`${styles['bg']}`}>
@@ -51,36 +81,54 @@ const LoginForm = ({
 					<span>注册</span>
 			    </div>
 			    <form>
-					<FormItem
-						{...formItemLayout}
-						label="昵称"
-						hasFeedback
-					>
-						{getFieldDecorator('user_name', {
-							rules: [{
-								required: true, message: '昵称不能为空',
-							}],
-						})(
-							<Input placeholder="请输入您的昵称" onBlur={checkHandle}/>
-							)}
-					</FormItem>
-					<FormItem
-						{...formItemLayout}
-						label="邮箱"
-						hasFeedback
-					>
-						{getFieldDecorator('email', {
-							rules: [{
-								type: 'email', message: '不是一个有效的邮箱',
-							},{
-								max : 200, message : '邮箱长度最大为200'
-							},{
-								required: true, message: '邮箱不能为空',
-							}],
-						})(
-							<Input placeholder="请输入您的邮箱" onBlur={checkHandle}/>
-							)}
-					</FormItem>
+			    	<Row style={{position: 'relative'}}>
+				    	<Col span={24}>
+							<FormItem
+								{...formItemLayout}
+								label="昵称"
+								hasFeedback
+							>
+								{getFieldDecorator('user_name', {
+									rules: [{
+										required: true, message: '昵称不能为空',
+									}],
+								})(
+									<Input placeholder="请输入您的昵称" onBlur={checkUserHandle}/>
+									)}
+							</FormItem>
+						</Col>
+						<Col span={7} style={{position: 'absolute',right: '-65px', top: '35%',transform: 'translateY(-50%)'}}>
+							{
+								userNameUsed ? <span style={{color: 'red'}}>*昵称已被占用</span> : ''
+							}
+						</Col>
+					</Row>
+					<Row style={{position: 'relative'}}>
+						<Col span={24}>
+							<FormItem
+								{...formItemLayout}
+								label="邮箱"
+								hasFeedback
+							>
+								{getFieldDecorator('email', {
+									rules: [{
+										type: 'email', message: '不是一个有效的邮箱',
+									},{
+										max : 200, message : '邮箱长度最大为200'
+									},{
+										required: true, message: '邮箱不能为空',
+									}],
+								})(
+									<Input placeholder="请输入您的邮箱" onBlur={checkEmailHandle}/>
+									)}
+							</FormItem>
+						</Col>
+						<Col span={7} style={{position: 'absolute',right: '-65px', top: '35%',transform: 'translateY(-50%)'}}>
+							{
+								emailUsed ? <span style={{color: 'red'}}>*邮箱已被占用</span> : ''
+							}
+						</Col>
+					</Row>
 					<FormItem
 						{...formItemLayout}
 						label="密码"
@@ -93,7 +141,7 @@ const LoginForm = ({
 								pattern:regex, message: '由数字、字母或特殊字符组成，长度8-20位'
 							}],
 						})(
-							<Input type="password" placeholder="请输入您的密码" />
+							<Input type="password" placeholder="请输入您的密码" onBlur={handleConfirmBlur}/>
 							)}
 					</FormItem>
 
@@ -107,7 +155,7 @@ const LoginForm = ({
 								required: true, message: '确认密码不能为空', pattern:regex
 							}],
 						})(
-							<Input type="password" placeholder="请再次输入您的密码" />
+							<Input type="password" placeholder="请再次输入您的密码" onBlur={handleConfirmBlur}/>
 							)}
 					</FormItem>
 					<Row type="flex" justify="space-around">
@@ -131,7 +179,6 @@ const LoginForm = ({
 						    </Button>
 					    </Col>
 					</Row>
-
 				</form>
 			</div>
 		</div>
@@ -140,7 +187,7 @@ const LoginForm = ({
 
 const mapStateToProps = (props) => {
     return {
-  		props: props.login
+  		props: props.main
     };
 }
 

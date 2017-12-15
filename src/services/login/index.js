@@ -31,13 +31,25 @@ export async function register(data) {
 }
 
 /**
- * 注册-查询用户名或邮箱是否已被占用
+ * 注册-查询用户名是否已被占用
  * @returns {Object}
  */
-export async function registerCheck(data) {
+export async function registerCheckByUser(data) {
     return request({
     	url: `${apiPrefix}${api[2]}`,
 		method: method[1],
 	    data
+    });
+}
+
+/**
+ * 注册-查询邮箱是否已被占用
+ * @returns {Object}
+ */
+export async function registerCheckByEmail(data) {
+    return request({
+        url: `${apiPrefix}${api[3]}`,
+        method: method[1],
+        data
     });
 }

@@ -1,7 +1,7 @@
 import { routerRedux } from 'dva/router';
 import { message } from 'antd';
 import {setCookie, getCookie, getTimestamp, encryptByDES } from '../utils/utils';
-import {login} from '../services/login';
+import {login, register, registerCheck} from '../services/login/index';
 
 const navs = require('../config/navs.json');
 const sid = getCookie('SID_KEY')
@@ -16,7 +16,9 @@ export default {
         currentRoute: '',              // 当前路由
         collapsed: false,              // slider是否展开
         nav: [],                       // 导航信息
-        pageStatus: 0                  // 页面类型，0首页，1登录页，2注册页，3进入主页
+        pageStatus: 0,                 // 页面类型，0首页，1登录页，2注册页，3进入主页
+
+
     },
 
 	subscriptions: {
@@ -60,6 +62,8 @@ export default {
     },
 
 	effects: {
+        /******************************登录、注册相关接口****************************/
+        // 登录
 		* login({ payload },{ put, call, select }) {
 			const data = yield call(login, payload);
 			if(data.code === 200){
@@ -82,6 +86,37 @@ export default {
             setCookie('SID_KEY', '', -1);
             yield put(routerRedux.push('/'));
         },
+        
+        // 注册
+        * register({ payload },{ put, call, select }) {
+            const data = yield call(register, payload);
+            if(data.code === 200){
+                message.success('注册成功')
+                setCookie('SID_KEY',payload.password || '');
+
+                yield put({
+                    type: 'setParams',
+                    payload:{pageStatus: 3}
+                });
+
+                yield put(routerRedux.push('/overview'));
+            }else{
+                message.error(`注册失败 ${data.msg}`)
+            }
+        },
+
+        // 注册check
+        * registerCheck({ payload },{ put, call, select }) {
+            const data = yield call(registerCheck, payload);
+            if(data.code != 200){
+                message.success('注册成功')
+
+                yield put({
+                    type: 'setParams',
+                    payload:{pageStatus: 3}
+                });
+            }
+        }
 	},
 
 	reducers: {

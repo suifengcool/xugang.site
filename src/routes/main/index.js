@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'dva'
+import { routerRedux } from 'dva/router';
 import {Link} from 'dva/router';
 import { Button, Input, Spin, Layout, Menu, Dropdown, Breadcrumb, Icon, Avatar, Row, Col, Badge} from 'antd'
 

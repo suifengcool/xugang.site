@@ -5,7 +5,7 @@
   }],
   "api": [
     "/user/login",
-    "/user/login_out",
-    "/user/register"
+    "/user/register",
+    "/user/registerCheck"
   ]
 }

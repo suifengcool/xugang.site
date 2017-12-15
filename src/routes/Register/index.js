@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'dva'
 import {Link} from 'dva/router';
+import { routerRedux } from 'dva/router';
 import { Button, Row, Form, Input ,Col} from 'antd'
 import styles from '../Login/index.less'
 const FormItem = Form.Item
@@ -13,6 +14,7 @@ const LoginForm = ({
     form: {
 	    getFieldDecorator,
 	    validateFieldsAndScroll,
+	    getFieldsValue
     }
 }) => {
 	const handleOk = ()=>{
@@ -20,7 +22,7 @@ const LoginForm = ({
 		    if (errors) {
 				return
 		    }
-		    dispatch({ type: 'login/login', payload: values })
+		    dispatch({ type: 'main/register', payload: values })
 		})
     }
 	
@@ -35,6 +37,13 @@ const LoginForm = ({
 		}
 	};
 
+	const checkHandle = () => {
+		console.log('11111111')
+			const values = getFieldsValue()
+		    console.log('values:',values)
+		    dispatch({ type: 'main/registerCheck', payload: values })
+	};
+
     return (
     	<div className={`${styles['bg']}`}>
 			<div className={`${styles['form']}`} style={{width: 380, height: 380, top: '35%'}}>
@@ -47,12 +56,12 @@ const LoginForm = ({
 						label="昵称"
 						hasFeedback
 					>
-						{getFieldDecorator('nickName', {
+						{getFieldDecorator('user_name', {
 							rules: [{
 								required: true, message: '昵称不能为空',
 							}],
 						})(
-							<Input placeholder="请输入您的昵称" />
+							<Input placeholder="请输入您的昵称" onBlur={checkHandle}/>
 							)}
 					</FormItem>
 					<FormItem
@@ -69,7 +78,7 @@ const LoginForm = ({
 								required: true, message: '邮箱不能为空',
 							}],
 						})(
-							<Input placeholder="请输入您的邮箱" />
+							<Input placeholder="请输入您的邮箱" onBlur={checkHandle}/>
 							)}
 					</FormItem>
 					<FormItem

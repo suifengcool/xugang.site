@@ -38,6 +38,27 @@
     border-radius: 50%;
 }
 
+.slider-box{
+    background: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+}
+.slider-img-box {
+    width: 100px;
+    height: 100px;
+    margin: 5px auto;
+}
+.slider-img-box img{
+    width: 100%;
+}
+.slider-box p{
+
+}
+.slider-box h3{
+    margin: 15px 0;
+}
+
 .desc{
     float: left;
     margin-left: 10px;

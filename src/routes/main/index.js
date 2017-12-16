@@ -102,9 +102,13 @@ const Main = ({main, dispatch}) => {
     	<Layout>
             <div style={{height:clientHeight}}>
                 <Header className={_styles.header}>
-                    <div className={_styles.logo}>
-                        <img src={require(`../../../public/image/me.jpg`)}/>
-                    </div>
+                    {
+                        collapsed
+                        ?<div className={_styles.logo}>
+                            <img src={require(`../../../public/image/me.jpg`)}/>
+                        </div>
+                        : ''
+                    }
                     <div className={_styles.desc}>
                         致力于开发高可维护、可持续、可扩展的高性能web应用
                     </div>
@@ -169,7 +173,7 @@ const Main = ({main, dispatch}) => {
                         onCollapse={onCollapse}
                     >
                         <div className={_styles['control-label']}>
-                            <span>控制台</span>
+                            <span>Suifeng</span>
                         </div>
                         <Menu
                             className={_styles['sider-bg']}
@@ -224,6 +228,17 @@ const Main = ({main, dispatch}) => {
                                     )
                                 })}
                         </Menu>
+                        {
+                            !collapsed
+                            ? <div className={_styles['slider-box']}>
+                                <div className={_styles['slider-img-box']}>
+                                    <img src={require(`../../../public/image/me.jpg`)}/>
+                                </div>
+                                <h3>Suifeng</h3>
+                                <p>一万年太久，只争朝夕~</p>
+                            </div>
+                            : ''
+                        }
                     </Sider>
                     <Layout className={_styles['layout-content-margin-top']} className={_styles['fixIE10Flex']}>
                         <div className={_styles.breadcrumb}>

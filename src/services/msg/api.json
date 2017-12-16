@@ -1,0 +1,10 @@
+{
+  "method": ["GET", "POST"],
+  "headers": [{
+    "Content-Type": "application/json"
+  }],
+  "api": [
+    "/user/getMsgList",
+    "/user/createMsg"
+  ]
+}

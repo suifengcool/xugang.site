@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'dva';
-import {Row, Col, Spin, Radio} from 'antd';
+import {Row, Col, Spin, Radio, Tooltip, BackTop} from 'antd';
 
 import _styles from './index.less';
 import '../../components/component-antd.less';
@@ -15,10 +15,18 @@ const Index = ({overview, dispatch}) => {
         <div className={`${styles['content']} ${styles['margin-top-none']}`}>
             <div className={styles['content-box-gray']}>
                 <div className={styles['content-box']}>
-                    <Row className={styles['border-bottom']} style={{marginTop: '-10px'}}>
-                        <div className={styles['content-title']}>
+                    <Row className={styles['border-bottom']} style={{marginTop: '-10px'}} type="flex" justify="space-between">
+                        <Col span={5} className={styles['content-title']}>
                             <h2 className={styles['title-left']}>个人简历</h2>
-                        </div>
+                        </Col>
+                        <Col span={4} className={`${_styles['download-icon']}`}>
+                            <Tooltip title="点击下载Word版">
+                                <i className={'iconfont icon-word'} style={{marginRight: 10}}></i>
+                            </Tooltip>
+                            <Tooltip title="点击下载PDF版">
+                                <i className={'iconfont icon-pdf'}></i>
+                            </Tooltip>
+                        </Col>
                     </Row>
                     <div className={styles['content-box']} style={{margin: '20px auto 20px',width: 960,border: '1px solid red'}}>
                         <Row gutter={10} type="flex" justify="space-between" className={styles['border-bottom']}>
@@ -63,7 +71,7 @@ const Index = ({overview, dispatch}) => {
                         <Row>
                             <div className={`${_styles['sub-title']} ${styles['border-bottom']}`}>
                                 <i className={'iconfont icon-bag-line'} style={{verticalAlign:'2%'}}></i>
-                                <span style={{marginTop: 20}}>工作经验</span>
+                                <span style={{marginTop: 20}}>工作经历</span>
                             </div>
                             <ul className={`${_styles['ul-style']} ${styles['border-bottom']}`}>
                                 <li className={`${styles['border-bottom']}`}>
@@ -273,6 +281,9 @@ const Index = ({overview, dispatch}) => {
                             </div>
                             <ul className={`${_styles['skill-ul']} ${_styles['ul-style']} ${styles['border-bottom']}`}>
                                 <li>因为热爱，所以上路。一路，求知若渴，虚心若愚！</li>
+                                <BackTop>
+                <div className="ant-back-top-inner">UP</div>
+            </BackTop>
                             </ul>
                         </Row>
                     </div>

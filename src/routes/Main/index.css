@@ -9,6 +9,7 @@
     left: 0;
     width: 100%;
     z-index: 555;
+    padding: 0 !important;
 }
 
 .header-right {
@@ -81,8 +82,9 @@
 }
 
 .dropdown-menu-item {
-    width: 64px;
-    height: 64px;
+    width: 75px;
+    height: 40px;
+    line-height: 40px;
     margin: 8px;
 }
 
@@ -97,10 +99,16 @@
 }
 
 .control-label {
-    height: 45px;
-    line-height: 45px;
     text-align: center;
+    font-size: 14px;
+    padding: 10px 0;
+    background: #404040;
+    min-height: 45px;
+}
+.control-label h4{
     font-size: 20px;
+}
+.control-label h4, .control-label p{
     color: #fff;
 }
 
@@ -113,9 +121,13 @@
 }
 
 .sider-bg {
-    background-color: #283951;
+    background-color: #fff;
+    color: #333;
 }
 
+.sider-bg a{
+    color:#000 !important;
+}
 .sider-bg-1 {
     background-color: #3b87ce;
 }
@@ -128,12 +140,12 @@
 }
 
 :global(.ant-menu.ant-menu-dark .ant-menu-item-selected a) {
-    color: #108ee9;
+    color: #333;
 }
 
 :global(.ant-menu-dark .ant-menu-inline.ant-menu-sub) {
     border-left: 3px solid #108ee9;
-    background: #1e2e45;
+    background: #fff;
 }
 
 .layout-content-margin-top{
@@ -186,38 +198,6 @@
 
 .content-center {
     margin: 0 auto;
-}
-
-.icon-1 {
-    width: 22px;
-    height: 22px;
-    background-image: url(../../assets/icons.png);
-    background-repeat: no-repeat;
-    background-position: 0 -25px;
-}
-
-.icon-2 {
-    width: 22px;
-    height: 22px;
-    background-image: url(../../assets/icons.png);
-    background-repeat: no-repeat;
-    background-position: -27px -25px;
-}
-
-.icon-3 {
-    width: 22px;
-    height: 22px;
-    background-image: url(../../assets/icons.png);
-    background-repeat: no-repeat;
-    background-position: -54px -25px;
-}
-
-.icon-4 {
-    width: 22px;
-    height: 22px;
-    background-image: url(../../assets/icons.png);
-    background-repeat: no-repeat;
-    background-position: -81px -25px;
 }
 
 .aboutMeIcon {

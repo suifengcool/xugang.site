@@ -24,7 +24,7 @@ const Main = ({main, dispatch}) => {
         key:"0_1",
         link:"overview",
         sign:"icon-home",
-        txt:"主页"
+        txt:"首页"
     },{
         children:[],
         id:2,
@@ -86,7 +86,7 @@ const Main = ({main, dispatch}) => {
         key:"7_1",
         link:"",
         sign:"icon-fanhui",
-        txt:"返回首页"
+        txt:"返回封面"
     }]
 
     const onCollapse = () => {
@@ -118,8 +118,8 @@ const Main = ({main, dispatch}) => {
                             </Col>
                             <Col span={7} style={{padding: '2px 0'}}>
                             </Col>
-                            <Col span={5}>
-                                <Avatar className={_styles.avatar} size="large" icon="user"/>
+                            <Col span={5} style={{textAlign: 'center'}}>
+                                <i className={'iconfont icon-icon-'} style={{fontSize:'35px'}}></i>
                             </Col>
                             <Col span={8}>
                                 <Dropdown trigger={['click']} overlay={
@@ -127,24 +127,15 @@ const Main = ({main, dispatch}) => {
                                     <Menu>
                                         <div className={_styles['dropdown-menu']}>
                                             <Row>
-                                                <Col span={8} className={_styles['dropdown-menu-item']}>
-                                                    <Link to='/user_info'>
-                                                        <div style={{margin: '5px 0'}}>
-                                                            <div className={`${_styles['content-center']} ${_styles['icon-1']}`}></div>
-                                                        </div>
-                                                        <div className={styles['font-color-7f8c97']}>会员中心</div>
+                                                <Col span={10} className={_styles['dropdown-menu-item']}>
+                                                    <Link to='/member'>
+                                                        <div className={styles['font-color-7f8c97']}><i className={'iconfont icon-huiyuan'} style={{marginRight:'5px'}}></i>会员中心</div>
                                                     </Link>
                                                 </Col>
-                                                <Col span={8} className={_styles['dropdown-menu-item']}>
-                                                    <Link to='/user_pwd'>
-                                                        <div style={{margin: '5px 0'}}>
-                                                            <div className={`${_styles['content-center']} ${_styles['icon-2']}`}></div>
-                                                        </div>
-                                                        <div className={styles['font-color-7f8c97']}>密码修改</div>
+                                                <Col span={10} className={_styles['dropdown-menu-item']}>
+                                                    <Link to='#'>
+                                                        <div className={styles['font-color-7f8c97']}><i className={'iconfont icon-mima'} style={{marginRight:'5px'}}></i>密码修改</div>
                                                     </Link>
-                                                </Col>
-                                                <Col span={8} className={_styles['dropdown-menu-item']}>
-                                                    
                                                 </Col>
                                             </Row>
                                         </div>
@@ -173,7 +164,16 @@ const Main = ({main, dispatch}) => {
                         onCollapse={onCollapse}
                     >
                         <div className={_styles['control-label']}>
-                            <span>Suifeng</span>
+                            {
+                                !collapsed 
+                                ? <h4>Suifeng</h4>
+                                : <p>随风</p>
+                            }
+                            {
+                                !collapsed 
+                                ? <p>make things make sense</p>
+                                : ''
+                            }
                         </div>
                         <Menu
                             className={_styles['sider-bg']}
@@ -230,12 +230,16 @@ const Main = ({main, dispatch}) => {
                         </Menu>
                         {
                             !collapsed
-                            ? <div className={_styles['slider-box']}>
+                            ? <div className={_styles['slider-box']} style={{marginTop: 15}}>
                                 <div className={_styles['slider-img-box']}>
                                     <img src={require(`../../../public/image/me.jpg`)}/>
                                 </div>
                                 <h3>Suifeng</h3>
-                                <p>一万年太久，只争朝夕~</p>
+                                <p className={styles['border-bottom']} style={{paddingBottom: '10px', boxSizing: 'border-box'}}>一万年太久，只争朝夕</p>
+                                <Row type="flex" justify="space-between" style={{paddingLeft: '30px',paddingRight: '30px', marginTop: '10px'}}>
+                                    <Col span={10}><i className={'iconfont icon-github'} style={{marginRight:'5px'}}></i><a href='https://github.com/suifengcool'>Github</a></Col>
+                                    <Col span={10}><i className={'iconfont icon-blog'} style={{marginRight:'5px'}}></i><a href='https://suifengcool.github.io/'>Blog</a></Col>
+                                </Row>
                             </div>
                             : ''
                         }

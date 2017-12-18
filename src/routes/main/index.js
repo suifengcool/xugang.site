@@ -261,7 +261,7 @@ const Main = ({main, dispatch}) => {
                             }
                         </Content>
                         <div style={{ textAlign: 'center' ,position: 'fixed',left:0,bottom:'0',color: '#000',width: '100%',height: 48,background :'#7B8182',lineHeight: '48px'}}>
-                            © 2017 - 随风 前端开发  - 鄂ICP备16003684号 坚持·规范·专注
+                            © 2017 - 随风 前端开发  - 鄂ICP备17029919号 坚持·规范·专注
                         </div>
                     </Layout>
 

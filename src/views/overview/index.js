@@ -12,8 +12,8 @@ const Index = ({overview, dispatch}) => {
 
     return (
         <div className={`${styles['content']} ${styles['margin-top-none']}`}>
-        	<div className={styles['content-box-gray']}>
-                首页
+            <div className={styles['content-box']}>
+    
             </div>
         </div>
     );

@@ -230,13 +230,13 @@ const Main = ({main, dispatch}) => {
                         </Menu>
                         {
                             !collapsed
-                            ? <div className={_styles['slider-box']} style={{marginTop: 15}}>
+                            ? <div className={_styles['slider-box']} style={{marginTop: 10}}>
                                 <div className={_styles['slider-img-box']}>
                                     <img src={require(`../../../public/image/me.jpg`)}/>
                                 </div>
                                 <h3>Suifeng</h3>
-                                <p className={styles['border-bottom']} style={{paddingBottom: '10px', boxSizing: 'border-box'}}>一万年太久，只争朝夕</p>
-                                <Row type="flex" justify="space-between" style={{paddingLeft: '30px',paddingRight: '30px', marginTop: '10px'}}>
+                                <p className={styles['border-bottom']} style={{paddingBottom: '20px', boxSizing: 'border-box'}}>一万年太久，只争朝夕</p>
+                                <Row type="flex" justify="space-between" style={{paddingLeft: '30px',paddingRight: '30px', marginTop: '20px'}}>
                                     <Col span={10}><i className={'iconfont icon-github'} style={{marginRight:'5px'}}></i><a href='https://github.com/suifengcool'>Github</a></Col>
                                     <Col span={10}><i className={'iconfont icon-blog'} style={{marginRight:'5px'}}></i><a href='https://suifengcool.github.io/'>Blog</a></Col>
                                 </Row>

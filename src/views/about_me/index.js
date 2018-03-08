@@ -39,7 +39,7 @@ const Index = ({overview, dispatch}) => {
                                         <h1>许刚</h1>
                                         <h2>Tel:13797071376</h2>
                                         <h2>Email:371801080@qq.com</h2>
-                                        <h2>个人网站:<a href="https://xugang.site">https://xugang.site</a></h2>
+                                        <h2>个人网站:<a href="http://xugang.site">http://xugang.site</a></h2>
                                     </Col>
                                     <Col span={12}>
                                         <h1>前端开发</h1>

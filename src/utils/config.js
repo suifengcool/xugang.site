@@ -2,7 +2,7 @@ const APIV1 = '/api/v1'
 
 module.exports = {
 	prefix: 'antdAdmin',
-	apiPrefix: '/api/v1',
+	apiPrefix: '123.206.201.196:3000',
 	api: {
 		userLogin: `${APIV1}/user/login`,
 		userLogout: `${APIV1}/user/logout`,

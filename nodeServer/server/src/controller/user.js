@@ -10,10 +10,10 @@ class UserController {
     * 用户注册
     */
     static async register(ctx) {
-		let { account, passwd ,email} = ctx.request.body
+		let { user_name, password ,email} = ctx.request.body
 		
 		try{
-			await UserModel.REGISTER(account, passwd ,email).then(status=>{
+			await UserModel.REGISTER(user_name, password ,email).then(status=>{
 				if(!status){
 					ctx.send({ 
 						code: 500, 
@@ -24,7 +24,7 @@ class UserController {
 					ctx.send({ 
 						code: 200, 
 						message: '注册成功', 
-						data: {account} 
+						data: {user_name} 
 					})
 				}
 			})
@@ -37,7 +37,7 @@ class UserController {
     * 用户注册--check邮箱
     */
     static async registerCheckEmail(ctx) {
-		let { account, passwd ,email} = ctx.request.body
+		let { user_name, password ,email} = ctx.request.body
 		
 		try{
 			await UserModel.CHECKEMAIL(email).then(status=>{
@@ -64,10 +64,10 @@ class UserController {
     * 用户注册--check用户名
     */
     static async registerCheckAccount(ctx) {
-		let { account, passwd ,email} = ctx.request.body
+		let { user_name, password ,email} = ctx.request.body
 		
 		try{
-			await UserModel.CHECKACCOUNT(account).then(status=>{
+			await UserModel.CHECKACCOUNT(user_name).then(status=>{
 				if(!status){
 					ctx.send({ 
 						code: 500, 
@@ -78,7 +78,7 @@ class UserController {
 					ctx.send({ 
 						code: 200, 
 						message: '该用户名未被注册', 
-						data: {account} 
+						data: {user_name} 
 					})
 				}
 			})
@@ -91,10 +91,10 @@ class UserController {
     * 登录
     */
     static async login(ctx) {
-		let { account, passwd } = ctx.request.body
+		let { user_name, password } = ctx.request.body
 		
 		try{
-			await UserModel.LOGIN(account, passwd).then(status=>{
+			await UserModel.LOGIN(user_name, password).then(status=>{
 				if(!status){
 					ctx.send({ 
 						code: 500, 
@@ -105,7 +105,7 @@ class UserController {
 					ctx.send({ 
 						code: 200, 
 						message: '登陆成功', 
-						data: {account} 
+						data: {user_name} 
 					})
 				}
 			})

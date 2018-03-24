@@ -13,7 +13,7 @@ const Index = ({overview, dispatch}) => {
 
     return (
         <div className={`${styles['content']} ${styles['margin-top-none']}`}>
-            <div className={styles['content-box-gray']}>
+            {/*<div className={styles['content-box-gray']}>
                 <div className={styles['content-box']}>
                     <Row className={styles['border-bottom']} style={{marginTop: '-10px'}} type="flex" justify="space-between">
                         <Col span={5} className={styles['content-title']}>
@@ -286,9 +286,11 @@ const Index = ({overview, dispatch}) => {
             </BackTop>
                             </ul>
                         </Row>
+
                     </div>
                 </div>
             </div>
+             */}
         </div>
     );
 };

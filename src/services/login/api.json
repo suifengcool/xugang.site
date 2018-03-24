@@ -4,9 +4,9 @@
     "Content-Type": "application/json"
   }],
   "api": [
-    "/user/login",
-    "/user/register",
-    "/user/registerCheckByUser",
-    "/user/registerCheckByEmail"
+    "123.206.201.196:3000/user/login",
+    "123.206.201.196:3000/user/register",
+    "123.206.201.196:3000/user/check_account",
+    "123.206.201.196:3000/user/check_email"
   ]
 }
